@@ -4,8 +4,9 @@
 
 ## 使用方法
 
-- AWSCDKv2 を使っているので、 `npm install -g aws-cdk` などの事前準備が必要です。(`cdk bootstrap` なども)
-- AWSへの認証を通しておく必要があります
+### 事前準備
+
+- AWSCDKv2 を使っているので 使っている AWS アカウントの CDK 用の事前準備が必要です(`cdk bootstrap` など)。
 
 ### 1. このリポジトリをクローンします。
 
@@ -28,13 +29,13 @@ npm install
 
 #### 3.2 デプロイ
 
-(事前にAWSへの認証情報を設定しておく必要があります。)
+(事前に AWS への認証情報を設定しておく必要があります。)
 
 ```bash
 export CDK_DEFAULT_ACCOUNT=123456789012 （あなたの AWS アカウント ID）
 export CDK_DEFAULT_REGION=ap-northeast-1 （あなたの AWS リージョン）
 export LAMBDA_APIKEY=YourApiKey （Lambda 関数を呼び出すための API キー）
-cdk deploy
+npx cdk deploy
 ```
 
 ### 4. Lambda 関数を呼び出します。
@@ -43,7 +44,7 @@ cdk deploy
 
 ```bash
 export LAMBDA_ENDPOINT=https://YOUR-FUNCTION-URL.lambda-url.ap-northeast-1.on.aws/
-const LAMBDA_APIKEY = "YOUR-LAMBDA-APIKEY";
+export LAMBDA_APIKEY="YOUR-LAMBDA-APIKEY";
 
 TEXT="ボイスボックスへ、ようこそ！"
 SPEAKER=0
