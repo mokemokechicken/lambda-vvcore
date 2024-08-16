@@ -30,6 +30,7 @@ npm install
 ```bash
 export CDK_DEFAULT_ACCOUNT=123456789012 （あなたの AWS アカウント ID）
 export CDK_DEFAULT_REGION=ap-northeast-1 （あなたの AWS リージョン）
+export LAMBDA_APIKEY=YourApiKey （Lambda 関数を呼び出すための API キー）
 cdk deploy
 ```
 
@@ -41,7 +42,7 @@ cdk deploy
 export LAMBDA_ENDPOINT=https://YOUR-FUNCTION-URL.lambda-url.ap-northeast-1.on.aws/
 
 JSON='{"text": "ようこそ、ボイスボックスへ！", "speaker_id": '0'}'
-response=$(curl -XPOST "$LAMBDA_ENDPOINT" -H "Content-Type: application/json" -d "$JSON")
+response=$(curl -XPOST "$LAMBDA_ENDPOINT" -H "Content-Type: application/json" -d "$JSON" -H "Authorization: Bearer $LAMBDA_APIKEY")
 echo $response | jq -r '.wav' | base64 -d > "response.wav"
 ```
 
