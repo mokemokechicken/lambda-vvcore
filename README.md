@@ -53,3 +53,7 @@ curl -s -XPOST "$LAMBDA_ENDPOINT" -H "Content-Type: application/json" -d "$JSON"
 ```
 
 `voice.wav` に音声ファイルが出力されます。
+
+# License
+
+[MIT License](https://mokemokechicken.mit-license.org/)
