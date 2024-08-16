@@ -26,6 +26,10 @@ export class LambdaVvcoreStack extends Stack {
       // 10240 MB だと 6vCPU になるらしい。速い。こんにちは に 初期5秒、2回目以降 1秒になる。
       memorySize: 10240,
       description: "Lambda function created from Docker image for lambda-vvcore",
+      environment: {
+        // Add the API key as an environment variable
+        LAMBDA_APIKEY: process.env.LAMBDA_APIKEY || "",
+      },
     });
 
     // Add Function URL to the Lambda function
